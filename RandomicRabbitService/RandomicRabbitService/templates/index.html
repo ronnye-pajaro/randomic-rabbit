@@ -6,9 +6,24 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Randomic Rabbit</title>
-      </head>
+    </head>
+
     <body>
-    <h2>Randomic Rabbit</h2>
-    <div>Random numbers from the server</div>
+        <h2>Randomic Rabbit</h2>
+        <div>Random numbers from the server: <span id="number"></span></div>
+
+        <script>
+            if(typeof(EventSource) !== "undefined") {
+                let evtSrc = new EventSource("stream/");
+                evtSrc.onmessage = function(event) {
+                    let number = document.getElementById("number");
+                    number.innerHTML = event.data;
+                };
+            } else {
+                let number = document.getElementById("number");
+                number.innerHTML = "There's a problem, this browser does not support server-sent events.";
+                number.style.color = "red";
+            }
+        </script>
     </body>
 </html>
