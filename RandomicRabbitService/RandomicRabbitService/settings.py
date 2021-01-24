@@ -124,5 +124,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "RandomicRabbitService" / "static",
 ]
-print("---> ")
-print(STATICFILES_DIRS)
+
