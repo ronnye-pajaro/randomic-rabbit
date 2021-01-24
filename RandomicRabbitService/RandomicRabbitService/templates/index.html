@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,12 +8,19 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Randomic Rabbit</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
 
-    <body>
-        <h1>Randomic Rabbit</h1>
-        <div style="font-size: 1.5rem;">Random numbers from the server: <span id="number" style="font-size: 3rem; color: blue"></span></div>
-
+    <body class="bg-light">
+        <div class="container">
+            <div class="py-5 text-center">
+              <img class="d-block mx-auto mb-4" src="{% static 'img/jumping-rabbit.png' %}" alt="jumping rabbit" height="160">
+              <h2>Randomic Rabbit</h2>
+              <p class="lead">Random numbers at random time intervals</p>
+              <p id="number" style="font-size: 8rem;"></p>
+            </div>
+        </div>
+        
         <script>
             if(typeof(EventSource) !== "undefined") {
                 let evtSrc = new EventSource("stream/");
